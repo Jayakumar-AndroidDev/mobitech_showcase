@@ -23,11 +23,12 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     });
 
     on<ProductListOnQueryEvent>((event, emit) {
+      //if query is empty from text field we return already fetched api data
       if (event.queryTxt.isEmpty) {
         emit(ProductSuccessState(productModel: list));
         return;
       }
-
+      //for filter the list and give the sorted list
       final filterList = list.where((element) {
         if ((element.name?.toLowerCase() ?? "").contains(
               event.queryTxt.toLowerCase(),
