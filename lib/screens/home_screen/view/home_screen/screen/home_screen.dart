@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mobitech_task/screens/home_screen/view/home_screen/widget/home_app_bar_widget.dart';
+import 'package:mobitech_task/screens/home_screen/view/home_screen/widget/product_search_field_widget.dart';
 import 'package:mobitech_task/screens/home_screen/view/home_screen/widget/product_list_item_widget.dart';
 import 'package:mobitech_task/screens/home_screen/view_model/product_bloc/bloc/product_bloc.dart';
 import 'package:mobitech_task/screens/home_screen/view_model/product_bloc/state/product_state.dart';
@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Column(
         children: [
-          HomeAppBarWidget(),
+          ProductSearchFieldWidget(),
           Expanded(
             child: BlocBuilder<ProductBloc, ProductState>(
               builder: (context, state) {

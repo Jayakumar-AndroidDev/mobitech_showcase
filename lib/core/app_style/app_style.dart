@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppStyle {
-  static const textFieldDecoration = OutlineInputBorder();
+  static OutlineInputBorder  textFieldDecoration = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(8),
+  );
 }

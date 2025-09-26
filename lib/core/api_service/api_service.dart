@@ -15,13 +15,10 @@ class ApiService {
       );
       if (response.statusCode == 200) {
         final result = json.decode(response.body) as List<dynamic>;
-
         List<ProductModel> list = [];
-
         for (var item in result) {
           list.add(ProductModel.fromJson(item));
         }
-
         return list;
       } else {
         throw "Unable to fetch response: ${response.statusCode}";
