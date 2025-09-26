@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobitech_task/core/app_style/app_style.dart';
 import 'package:mobitech_task/screens/home_screen/view_model/product_bloc/bloc/product_bloc.dart';
 import 'package:mobitech_task/screens/home_screen/view_model/product_bloc/event/product_event.dart';
 
@@ -17,13 +18,11 @@ class HomeAppBarWidget extends StatelessWidget {
       child: SafeArea(
         bottom: false ,
         child: TextField(
-          
           decoration: InputDecoration(
-            enabledBorder: OutlineInputBorder(),
-            focusedBorder: OutlineInputBorder(),
+            enabledBorder: AppStyle.textFieldDecoration,
+            focusedBorder: AppStyle.textFieldDecoration,
             label: Text('Enter name & price'),
           ),
-          
           onChanged: (value) {
             context.read<ProductBloc>().add(ProductListOnQueryEvent(queryTxt: value));
           },

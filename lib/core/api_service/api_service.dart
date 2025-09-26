@@ -1,4 +1,6 @@
+import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 import 'package:mobitech_task/screens/home_screen/model/product_model.dart';
 import 'package:http/http.dart' as http;
 
@@ -16,14 +18,20 @@ class ApiService {
 
         List<ProductModel> list = [];
 
-        result.forEach((item) => list.add(ProductModel.fromJson(item)));
+        for (var item in result) {
+          list.add(ProductModel.fromJson(item));
+        }
 
         return list;
-      } else { 
-        throw "Unable to fetch response ${response.statusCode}";
+      } else {
+        throw "Unable to fetch response: ${response.statusCode}";
       }
+    } on SocketException {
+      throw "Server failed to respond!";
+    } on TimeoutException {
+      throw "Request time out!";
     } catch (err) {
-      throw "Unable to fetch response $err";
+      throw "Unable to fetch response: $err";
     }
   }
 }
